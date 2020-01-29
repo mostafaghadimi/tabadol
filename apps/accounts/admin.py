@@ -15,7 +15,7 @@ class ProfileInline(admin.StackedInline):
 class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline, )
     
-    list_display = ('username', 'email', 'get_university', 'get_discipline')
+    list_display = ('username', 'email', 'get_university', 'get_discipline', 'get_student')
 
     def get_university(self, instance):
         return instance.profile.university
@@ -23,9 +23,14 @@ class CustomUserAdmin(UserAdmin):
     def get_discipline(self, instance):
         return instance.profile.discipline
 
+    def get_student(self, instance):
+        return instance.profile.is_student
+
     #Attributes name shown in admin    
     get_university.short_description = 'University'
-    get_discipline.short_description = 'discipline'
+    get_discipline.short_description = 'Discipline'
+    get_student.short_description = 'Is Student'
+    get_student.boolean = True
 
 
     def get_inline_instances(self, request, obj = None):

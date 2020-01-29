@@ -17,6 +17,7 @@ class Profile(models.Model):
                                  default="", 
                                  verbose_name="field of study"
                                  )
+    is_student = models.BooleanField(default=True)
 
     # @receiver(post_save, sender=User)
     # def create_user_profile(self, sender, instance, created, **kwargs):
