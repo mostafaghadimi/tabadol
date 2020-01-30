@@ -1,6 +1,6 @@
+from apps.universities.models import University
 from django.contrib.auth.models import User
 from django.db import models
-
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -12,7 +12,10 @@ class Profile(models.Model):
                                 )
                                 
     avatar = models.ImageField(upload_to='static/avatars')
-    university = models.CharField(max_length=100, default="")
+    university = models.OneToOneField(University,
+                                      on_delete=models.CASCADE,
+                                      related_name='university'
+                                     )
     discipline = models.CharField(max_length=100,
                                  default="", 
                                  verbose_name="field of study"
