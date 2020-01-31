@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.accounts',
     'apps.books',
-    'apps.requests'
+    'apps.requests',
+    'apps.universities',
 ]
 
 
