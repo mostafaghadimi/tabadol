@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from apps.accounts.models import Profile
+from django.contrib.auth.models import User
 
 is_new_choices = (
     (True, 'نو'),
@@ -8,7 +8,7 @@ is_new_choices = (
 )
 
 class Books(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     name = models.CharField(max_length=100, blank=False)
     publisher = models.CharField(max_length=100, blank=False)
     sale_price = models.IntegerField(blank=False, verbose_name='Sale Price')

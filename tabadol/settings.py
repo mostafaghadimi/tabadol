@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'apps.books',
     'apps.requests',
     'apps.universities',
+
 ]
 
 

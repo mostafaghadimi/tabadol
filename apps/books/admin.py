@@ -3,7 +3,7 @@ from .models import Books
 # Register your models here.
 
 class BooksAdmin(admin.ModelAdmin):
-    list_display = ['name', 'publisher', 'sale_price', 'price_on_book', 'isnew', 'created_at', 'last_modified']
+    list_display = ['name', 'owner', 'publisher', 'sale_price', 'price_on_book', 'isnew', 'created_at', 'last_modified']
 
     def isnew(self, obj):
         if obj.is_new:
