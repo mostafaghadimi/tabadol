@@ -11,8 +11,8 @@ class Profile(models.Model):
                                 related_name= 'profile'
                                 )
                                 
-    avatar = models.ImageField(upload_to='static/avatars')
-    university = models.OneToOneField(University,
+    avatar = models.ImageField(upload_to='static/avatars', default='/')
+    university = models.ForeignKey(University,
                                       on_delete=models.CASCADE,
                                       related_name='university'
                                      )
@@ -21,22 +21,6 @@ class Profile(models.Model):
                                  verbose_name="field of study"
                                  )
     is_student = models.BooleanField(default=True)
-
-    # @receiver(post_save, sender=User)
-    # def create_user_profile(self, sender, instance, created, **kwargs):
-    #     if created:
-    #         Profile.objects.create(user=instance)
-
-    # @receiver(post_save, sender=User)
-    # def save_user_profile(self, sender, instance, **kwargs):
-    #     instance.profile.save()  # @receiver(post_save, sender=User)
-    # def create_user_profile(self, sender, instance, created, **kwargs):
-    #     if created:
-    #         Profile.objects.create(user=instance)
-
-    # @receiver(post_save, sender=User)
-    # def save_user_profile(self, sender, instance, **kwargs):
-    #     instance.profile.save()
     
     def __str__(self):
         return str(self.user.email)
